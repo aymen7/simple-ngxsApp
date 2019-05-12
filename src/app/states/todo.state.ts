@@ -38,7 +38,7 @@ export class TodoState {
     remove({getState, patchState}: StateContext<TodoStateModel>, {payload}: RemoveTodo) {
         patchState({
             // tslint:disable-next-line:no-unused-expression
-            todoList: getState().todoList.filter( todo => { todo.id !== payload; })
+            todoList: getState().todoList.filter( todo => todo.id !== payload )
         });
     }
 

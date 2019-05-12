@@ -1,3 +1,6 @@
 <ol>
-  <li *ngFor="let todo of todoList$ | async">{{todo.label}}</li>
+  <li *ngFor="let todo of todoList$ | async">
+    <span>{{todo.label}}</span>
+    <button (click)='removeTodo(todo.id)' class='btn'><mat-icon>remove_circle_outline</mat-icon></button>
+  </li>
 </ol>
