@@ -9,3 +9,7 @@ export class RemoveTodo {
     static readonly type = '[USER] Remove';
     constructor(public payload: number) {}
 }
+export class UpdateTodo {
+    static readonly type = '[USER] Update';
+    constructor(public payload: {id: number, newLabel: string}) {}
+}

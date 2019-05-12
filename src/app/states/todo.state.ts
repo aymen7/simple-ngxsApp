@@ -1,6 +1,7 @@
 import { Todo } from '../models/todo.model';
-import { State, Selector, Action, StateContext} from '@ngxs/store';
-import { AddTodo, RemoveTodo } from '../actions/todo.actions';
+import { State, Selector, Action, StateContext, UpdateState} from '@ngxs/store';
+import { AddTodo, RemoveTodo, UpdateTodo } from '../actions/todo.actions';
+import { updateItem, patch } from '@ngxs/store/operators';
 
 export class TodoStateModel {
     todoList: Todo[];
@@ -40,6 +41,13 @@ export class TodoState {
             // tslint:disable-next-line:no-unused-expression
             todoList: getState().todoList.filter( todo => todo.id !== payload )
         });
+    }
+
+    @Action(UpdateTodo)
+    update(ctx: StateContext<TodoStateModel>, {payload}: UpdateTodo) {
+        const todo: Todo = {id: payload.id, label: payload.newLabel};
+        ctx.dispatch(new RemoveTodo(payload.id));
+        ctx.dispatch(new AddTodo(todo));
     }
 
 }

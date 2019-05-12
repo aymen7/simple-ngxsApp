@@ -1,6 +1,14 @@
 <ol>
   <li *ngFor="let todo of todoList$ | async">
     <span>{{todo.label}}</span>
-    <button (click)='removeTodo(todo.id)' class='btn'><mat-icon>remove_circle_outline</mat-icon></button>
+    <button (click)='removeTodo(todo.id)' class='btn' id='deleteBtn'>
+      <mat-icon>remove_circle_outline</mat-icon>
+    </button>
+    <button (click)='requestUpdate()' class='btn' *ngIf="!updateBtnHasBeenClicked">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button (click)='updateTodo(todo.id, "Todo")' class='btn' *ngIf="updateBtnHasBeenClicked">
+      <mat-icon>check_mark</mat-icon>
+    </button>
   </li>
 </ol>
