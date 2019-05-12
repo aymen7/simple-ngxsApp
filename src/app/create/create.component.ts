@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { AddUser } from '../actions/user.actions';
-import { User } from '../models/user.model';
+import { AddTodo } from '../actions/todo.actions';
+import { Todo } from '../models/todo.model';
 
 @Component({
   selector: 'app-create',
@@ -9,14 +9,14 @@ import { User } from '../models/user.model';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-
+  @ViewChild('label') label: ElementRef;
   constructor(private store: Store) { }
 
-  addUser(firstName: string, lastName: string, userName: string) {
-    const id = Math.random() * 1000;
+  addTodo(label: string) {
+    const id = Math.round((Math.random() * 100));
     // tslint:disable-next-line:object-literal-shorthand
-    const user: User = {id: id, username: userName, firstName: firstName, lastName: lastName};
-    this.store.dispatch(new AddUser(user));
+    const todo: Todo = {id: id, label: label};
+    this.store.dispatch(new AddTodo(todo)).subscribe( () => this.label.nativeElement.value = '');
   }
 
   ngOnInit() {

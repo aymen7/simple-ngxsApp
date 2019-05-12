@@ -1,19 +1,5 @@
-<h1>Add a user </h1>
-<form>
-		<ul>
-				<li>
-						<input id="first-name" type="text" #firstName/>
-						<label for="first-name">First Name</label>
-				</li>
-				<li>
-						<input id="last-name" type="text" #lastName/>
-						<label for="last-name">Last Name</label>
-				</li>
-				<li>
-						<input id="email" type="text" #userName/>
-						<label for="email">User Name</label>
-				</li>
-    </ul>
-    <button type="button" class='btn btn-primary' (click)='addUser(firstName.value, lastName.value, userName.value)'>Add</button>
+<form name="toDoList">
+	<input type="text" name="ListItem" #label/>
 </form>
 
+<button id="button" type='button' (click)='addTodo(label.value)' class='btn'>Add</button>

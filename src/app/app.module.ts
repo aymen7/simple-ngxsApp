@@ -7,9 +7,11 @@ import { CreateComponent } from './create/create.component';
 import { ReadComponent } from './read/read.component';
 
 import { NgxsModule } from '@ngxs/store';
-import { UserState } from './states/user.state';
+import { TodoState } from './states/todo.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,8 +21,9 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     NgxsModule.forRoot([
-      UserState
+      TodoState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot()
